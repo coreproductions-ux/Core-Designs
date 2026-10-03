@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE APEX SERIES // Core Productions</title>
+    <title>Core Productions — The Apex Series</title>
     <style>
         :root {
             --bg-obsidian: #070707;
@@ -109,7 +109,7 @@
 
         .hero {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .hero h1 {
@@ -128,12 +128,55 @@
             font-weight: 400;
         }
 
+        /* About Section */
+        .about-section {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            padding: 24px 32px;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+        }
+
+        /* Services Bar (Minimalist Swiss Typography) */
+        .services-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+        }
+
+        .service-pill {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            padding: 16px 20px;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            backdrop-filter: blur(20px);
+            transition: border-color 0.3s ease;
+        }
+
+        .service-pill:hover {
+            border-color: var(--border-glass-glow);
+        }
+
         /* Interactive Tab Switcher */
         .tab-switcher {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .tab-btn {
@@ -181,7 +224,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 24px;
-            margin-bottom: 100px;
+            margin-bottom: 80px;
         }
 
         /* Apple Liquid Glass Card Component */
@@ -245,7 +288,7 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .card-title {
@@ -254,15 +297,44 @@
             color: var(--text-primary);
         }
 
-        .card-stats {
-            font-size: 0.8rem;
+        .card-subtext {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .card-subtext a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .card-subtext a:hover {
             color: var(--accent-red);
-            font-weight: 500;
+            border-bottom-color: var(--accent-red);
         }
 
         .card-desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .project-specs {
+            border-top: 1px solid var(--border-glass);
+            padding-top: 10px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .project-specs span {
+            color: var(--text-primary);
         }
 
         /* Outreach Section */
@@ -281,13 +353,13 @@
         .outreach-box h3 {
             font-size: 1.8rem;
             font-weight: 500;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: -0.02em;
         }
 
         .outreach-box p {
             color: var(--text-secondary);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             font-size: 0.95rem;
         }
 
@@ -341,20 +413,32 @@
         <div class="brand-group">
             <img src="core-productions-logo.png" alt="Core Productions Logo" class="brand-logo">
             <div class="logo-text">
-                <div class="logo">Apex Series</div>
-                <div class="sub-logo">Core Productions</div>
+                <div class="logo">Core Productions</div>
+                <div class="sub-logo">Home of The Apex Series</div>
             </div>
         </div>
         <div class="status-badge">
             <div class="status-dot"></div>
-            Available for Client Inquiries
+            Available for Inquiries
         </div>
     </header>
 
     <main>
         <div class="hero">
             <h1>Precision Motion & Visuals.</h1>
-            <p>Data-driven short-form automotive media, color science grade suites, and minimalist Swiss-grid design assets.</p>
+            <p>Automotive short-form media, visual storytelling, and Swiss-grid graphic design.</p>
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <div class="about-section">
+            Core Productions is an independent visual studio by Navthej Girish, focused on automotive motion, design, and cinematic post-production.
+        </div>
+
+        <!-- SERVICES OFFERED (Minimalist Swiss Typography) -->
+        <div class="services-bar">
+            <div class="service-pill">Automotive Reels</div>
+            <div class="service-pill">Poster & Social Design</div>
+            <div class="service-pill">Color Grading + Sound Design</div>
         </div>
 
         <!-- SWITCHER TABS -->
@@ -367,107 +451,147 @@
         <div id="reels-section" class="content-section active">
             <div class="grid-container">
                 
-                <!-- REEL 1 (16:9 Widescreen) -->
+                <!-- REEL 1 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview widescreen">
-                        <video src="reel-911-1.mp4" poster="reel-911-1-thumb.jpg" autoplay loop muted playsinline></video>
+                        <video src="reel-911-1.mp4" poster="reel-911-1-thumb.jpg" preload="metadata" autoplay loop muted playsinline></video>
                     </div>
                     <div class="card-meta">
                         <span class="card-title">CHASSIS 01 // 911.1</span>
-                        <span class="card-stats">630+ Views</span>
                     </div>
-                    <div class="card-desc">Obsidian color grade, custom multi-layer sound design, high non-follower algorithmic reach.</div>
+                    <div class="card-subtext"><a href="https://www.instagram.com/core.productions_official/" target="_blank">Instagram ↗</a> · 630+ views</div>
+                    <div class="card-desc">Obsidian-grade edit with multi-layer sound design and cinematic pacing.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Personal Spec Project · 2026</div>
+                        <div><span>Tools:</span> DaVinci Resolve, CapCut</div>
+                        <div><span>Deliverable:</span> 16:9 Cinematic Motion Film</div>
+                    </div>
                 </div>
 
-                <!-- REEL 2 (9:16 Vertical) -->
+                <!-- REEL 2 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
-                        <video src="reel-911-2.mp4" poster="reel-911-2-thumb.jpg" autoplay loop muted playsinline></video>
+                        <video src="reel-911-2.mp4" poster="reel-911-2-thumb.jpg" preload="metadata" autoplay loop muted playsinline></video>
                     </div>
                     <div class="card-meta">
                         <span class="card-title">CHASSIS 02 // Porsche 911</span>
-                        <span class="card-stats">670 Views</span>
                     </div>
-                    <div class="card-desc">High-velocity short-form edit optimized for organic discovery and high share-to-view ratios.</div>
+                    <div class="card-subtext"><a href="https://www.instagram.com/core.productions_official/" target="_blank">Instagram ↗</a> · 665+ views</div>
+                    <div class="card-desc">High-velocity vertical short-form edit built with dynamic cadence.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Personal Spec Project · 2026</div>
+                        <div><span>Tools:</span> Blackmagic Cam, DaVinci Resolve</div>
+                        <div><span>Deliverable:</span> 9:16 Vertical Reel</div>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-        <!-- POSTER SERIES SECTION (9:16 Panels) -->
+        <!-- POSTER SERIES SECTION -->
         <div id="posters-section" class="content-section">
             <div class="grid-container">
                 
-                <!-- POSTER 1: Porsche -->
+                <!-- POSTER 1 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
                         <img src="porsche-poster.jpg" alt="Porsche 911 Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">Porsche 911 Edition</span>
-                        <span class="card-stats">Swiss Grid</span>
                     </div>
+                    <div class="card-subtext">Poster Series · Swiss Grid</div>
                     <div class="card-desc">Minimalist graphic composition focusing on clean lines and negative space.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Spec Design · 2026</div>
+                        <div><span>Tools:</span> Adobe Photoshop 2021</div>
+                        <div><span>Focus:</span> Typography & Grid Alignment</div>
+                    </div>
                 </div>
 
-                <!-- POSTER 2: McLaren -->
+                <!-- POSTER 2 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
                         <img src="mclaren-poster.jpg" alt="McLaren Senna Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">McLaren Senna Edition</span>
-                        <span class="card-stats">Swiss Grid</span>
                     </div>
-                    <div class="card-desc">Targeted automotive visual layout emphasizing high-end design principles.</div>
+                    <div class="card-subtext">Poster Series · Swiss Grid</div>
+                    <div class="card-desc">Aggressive track-focused composition built around the Senna's aerodynamic geometry.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Spec Design · 2026</div>
+                        <div><span>Tools:</span> Adobe Photoshop 2021</div>
+                        <div><span>Focus:</span> Color Grading & Layer Masking</div>
+                    </div>
                 </div>
 
-                <!-- POSTER 3: AMR Pro -->
+                <!-- POSTER 3 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
                         <img src="amr-pro-poster.jpg" alt="Aston Martin AMR Pro Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">Aston Martin AMR Pro</span>
-                        <span class="card-stats">Swiss Grid</span>
                     </div>
-                    <div class="card-desc">Aggressive track aerodynamic layout paired with obsidian editorial framing.</div>
+                    <div class="card-subtext">Poster Series · Swiss Grid</div>
+                    <div class="card-desc">Editorial layout built around the AMR Pro's aerodynamic form and technical character.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Spec Design · 2026</div>
+                        <div><span>Tools:</span> Adobe Photoshop 2021</div>
+                        <div><span>Focus:</span> Spec Sheet Typography</div>
+                    </div>
                 </div>
 
-                <!-- POSTER 4: Ford GT -->
+                <!-- POSTER 4 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
                         <img src="ford-gt-poster.jpg" alt="Ford GT Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">Ford GT Edition</span>
-                        <span class="card-stats">Swiss Grid</span>
                     </div>
-                    <div class="card-desc">Le Mans heritage lines translated into a high-end minimalist poster composition.</div>
+                    <div class="card-subtext">Poster Series · Swiss Grid</div>
+                    <div class="card-desc">Minimalist composition inspired by the GT's Le Mans heritage.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Spec Design · 2026</div>
+                        <div><span>Tools:</span> Adobe Photoshop 2021</div>
+                        <div><span>Focus:</span> Heritage Layout & Tone</div>
+                    </div>
                 </div>
 
-                <!-- POSTER 5: Ferrari F40 -->
+                <!-- POSTER 5 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
                         <img src="ferrari-f40-poster.jpg" alt="Ferrari F40 Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">Ferrari F40 Legend</span>
-                        <span class="card-stats">Swiss Grid</span>
                     </div>
-                    <div class="card-desc">Raw analog performance icon structured through a modern editorial grid lens.</div>
+                    <div class="card-subtext">Poster Series · Swiss Grid</div>
+                    <div class="card-desc">Modern editorial treatment combining analog texture, contrast and the F40's raw character.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Spec Design · 2026</div>
+                        <div><span>Tools:</span> Adobe Photoshop 2021</div>
+                        <div><span>Focus:</span> Analog Texture & Contrast</div>
+                    </div>
                 </div>
 
-                <!-- POSTER 6: Lamborghini Countach -->
+                <!-- POSTER 6 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
                         <img src="lambo-poster.jpg" alt="Lamborghini Countach Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">Lamborghini Countach</span>
-                        <span class="card-stats">Swiss Grid</span>
                     </div>
-                    <div class="card-desc">Wedge-design geometry framed against deep obsidian negative space.</div>
+                    <div class="card-subtext">Poster Series · Swiss Grid</div>
+                    <div class="card-desc">Geometric composition built around the Countach's iconic wedge profile.</div>
+                    <div class="project-specs">
+                        <div><span>Type:</span> Spec Design · 2026</div>
+                        <div><span>Tools:</span> Adobe Photoshop 2021</div>
+                        <div><span>Focus:</span> Geometric Framing</div>
+                    </div>
                 </div>
 
             </div>
@@ -476,15 +600,15 @@
         <!-- OUTREACH SECTION -->
         <section>
             <div class="outreach-box">
-                <h3>Let's Elevate Your Brand</h3>
-                <p>Looking for high-end cinematic short-form content or visual asset creation for your automotive project or local shop? Get in touch directly.</p>
+                <h3>Have a machine worth showing?</h3>
+                <p>Cinematic automotive reels, visual design and post-production.</p>
                 <a href="mailto:navtechproductions@gmail.com" class="cta-button">Initiate Contact</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 THE APEX SERIES // CORE PRODUCTIONS. ALL RIGHTS RESERVED.</p>
+        <p>&copy; 2026 CORE PRODUCTIONS. ALL RIGHTS RESERVED.</p>
         <div class="designer-credit">Designed by Navthej Girish</div>
     </footer>
 
