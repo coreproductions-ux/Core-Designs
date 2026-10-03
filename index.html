@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE APEX SERIES // Automotive Digital Studio</title>
+    <style>
+        :root {
+            --bg-obsidian: #070707;
+            --surface-glass: rgba(255, 255, 255, 0.03);
+            --surface-glass-hover: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-glow: rgba(255, 255, 255, 0.2);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-red: #ff3b30;
+            --grid-line: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        header {
+            padding: 40px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            background: rgba(7, 7, 7, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #34c759;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(52, 199, 89, 0.5);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        section {
+            margin-bottom: 120px;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border-glass);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        /* Apple Liquid Glass Card Component */
+        .liquid-glass-card {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid-glass-card:hover {
+            background: var(--surface-glass-hover);
+            border-color: var(--border-glass-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .media-preview {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #121212;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media-preview.vertical {
+            aspect-ratio: 9/16;
+            max-width: 280px;
+            margin: 0 auto 20px auto;
+        }
+
+        .media-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .liquid-glass-card:hover .media-preview img {
+            transform: scale(1.03);
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .card-stats {
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            font-weight: 500;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Contact / Outreach Section */
+        .outreach-box {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .outreach-box h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .outreach-box p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--text-primary);
+            color: var(--bg-obsidian);
+            padding: 14px 32px;
+            border-radius: 980px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            main { padding: 40px 16px; }
+            .outreach-box { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Apex Series // Studio</div>
+        <div class="status-badge">
+            <div class="status-dot"></div>
+            Available for Client Inquiries
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Precision Motion & Visuals.</h1>
+            <p>Data-driven short-form automotive media, color science grade suites, and minimalist Swiss-grid design assets.</p>
+        </div>
+
+        <!-- MOTION REELS -->
+        <section>
+            <div class="section-title">Motion Archive</div>
+            <div class="grid-container">
+                
+                <div class="liquid-glass-card">
+                    <div class="media-preview vertical">
+                        <!-- Replace with your actual video or placeholder thumbnail -->
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">911.1 Reel Asset</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="card-title">CHASSIS 01 // 911.1</span>
+                        <span class="card-stats">630+ Views</span>
+                    </div>
+                    <div class="card-desc">Obsidian color grade, custom multi-layer sound design, 80.7% non-follower algorithmic reach.</div>
+                </div>
+
+                <div class="liquid-glass-card">
+                    <div class="media-preview vertical">
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">911 Reel Asset</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="card-title">CHASSIS 02 // Porsche 911</span>
+                        <span class="card-stats">670 Views</span>
+                    </div>
+                    <div class="card-desc">High-velocity short-form edit optimized for organic discovery and high share-to-view ratios.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STILL VISUALS / POSTERS -->
+        <section>
+            <div class="section-title">Poster Series</div>
+            <div class="grid-container">
+                
+                <div class="liquid-glass-card">
+                    <div class="media-preview">
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">Porsche 911 Poster</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="card-title">Porsche 911 Edition</span>
+                        <span class="card-stats">Swiss Grid</span>
+                    </div>
+                    <div class="card-desc">Minimalist graphic composition focusing on clean lines and negative space.</div>
+                </div>
+
+                <div class="liquid-glass-card">
+                    <div class="media-preview">
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">McLaren Senna Poster</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="card-title">McLaren Senna Edition</span>
+                        <span class="card-stats">Swiss Grid</span>
+                    </div>
+                    <div class="card-desc">Targeted automotive visual layout emphasizing high-end design principles.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- OUTREACH SECTION -->
+        <section>
+            <div class="outreach-box">
+                <h3>Let's Elevate Your Brand</h3>
+                <p>Looking for high-end cinematic short-form content or visual asset creation for your automotive project or local shop? Get in touch directly.</p>
+                <a href="mailto:contact@apexseries.studio" class="cta-button">Initiate Contact</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 THE APEX SERIES. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+</body>
+</html>
