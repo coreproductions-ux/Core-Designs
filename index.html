@@ -291,6 +291,18 @@
             margin-bottom: 6px;
         }
 
+        .card-title-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .card-title-link:hover {
+            color: var(--accent-red);
+        }
+
         .card-title {
             font-size: 1.1rem;
             font-weight: 500;
@@ -451,13 +463,13 @@
         <div id="reels-section" class="content-section active">
             <div class="grid-container">
                 
-                <!-- REEL 1 -->
+                <!-- REEL 1 (Linked to Case Study Page) -->
                 <div class="liquid-glass-card">
                     <div class="media-preview widescreen">
                         <video src="reel-911-1.mp4" poster="reel-911-1-thumb.jpg" preload="metadata" autoplay loop muted playsinline></video>
                     </div>
                     <div class="card-meta">
-                        <span class="card-title">CHASSIS 01 // 911.1</span>
+                        <a href="porsche-911.html" class="card-title-link">CHASSIS 01 // 911.1 ↗</a>
                     </div>
                     <div class="card-subtext"><a href="https://www.instagram.com/core.productions_official/" target="_blank">Instagram ↗</a> · 630+ views</div>
                     <div class="card-desc">Obsidian-grade edit with multi-layer sound design and cinematic pacing.</div>
