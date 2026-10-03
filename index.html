@@ -170,7 +170,8 @@
             margin: 0 auto 20px auto;
         }
 
-        .media-preview img {
+        .media-preview img, 
+        .media-preview video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -205,7 +206,7 @@
             color: var(--text-secondary);
         }
 
-        /* Contact / Outreach Section */
+        /* Outreach Section */
         .outreach-box {
             background: var(--surface-glass);
             border: 1px solid var(--border-glass);
@@ -285,21 +286,22 @@
             <div class="section-title">Motion Archive</div>
             <div class="grid-container">
                 
+                <!-- REEL 1 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
-                        <!-- Replace with your actual video or placeholder thumbnail -->
-                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">911.1 Reel Asset</div>
+                        <video src="reel-911-1.mp4" poster="reel-911-1-thumb.jpg" autoplay loop muted playsinline></video>
                     </div>
                     <div class="card-meta">
                         <span class="card-title">CHASSIS 01 // 911.1</span>
                         <span class="card-stats">630+ Views</span>
                     </div>
-                    <div class="card-desc">Obsidian color grade, custom multi-layer sound design, 80.7% non-follower algorithmic reach.</div>
+                    <div class="card-desc">Obsidian color grade, custom multi-layer sound design, high non-follower algorithmic reach.</div>
                 </div>
 
+                <!-- REEL 2 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview vertical">
-                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">911 Reel Asset</div>
+                        <video src="reel-911-2.mp4" poster="reel-911-2-thumb.jpg" autoplay loop muted playsinline></video>
                     </div>
                     <div class="card-meta">
                         <span class="card-title">CHASSIS 02 // Porsche 911</span>
@@ -316,9 +318,10 @@
             <div class="section-title">Poster Series</div>
             <div class="grid-container">
                 
+                <!-- POSTER 1 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview">
-                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">Porsche 911 Poster</div>
+                        <img src="porsche-poster.jpg" alt="Porsche 911 Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">Porsche 911 Edition</span>
@@ -327,9 +330,10 @@
                     <div class="card-desc">Minimalist graphic composition focusing on clean lines and negative space.</div>
                 </div>
 
+                <!-- POSTER 2 -->
                 <div class="liquid-glass-card">
                     <div class="media-preview">
-                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary); font-size: 0.8rem;">McLaren Senna Poster</div>
+                        <img src="mclaren-poster.jpg" alt="McLaren Senna Poster">
                     </div>
                     <div class="card-meta">
                         <span class="card-title">McLaren Senna Edition</span>
