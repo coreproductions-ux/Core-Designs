@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHASSIS 01 // Porsche 911.1 — Core Productions</title>
+    <style>
+        :root {
+            --bg-obsidian: #070707;
+            --surface-glass: rgba(255, 255, 255, 0.03);
+            --surface-glass-hover: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-glow: rgba(255, 255, 255, 0.2);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-red: #ff3b30;
+            --grid-line: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Navigation Header */
+        header {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            background: rgba(7, 7, 7, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        .studio-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Section */
+        .project-hero {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 24px 40px 24px;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Immersive Scrolling Content */
+        .story-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 120px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        /* Scroll Fade-Up Elements */
+        .story-block {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+        }
+
+        .story-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .media-wrapper {
+            width: 100%;
+            background: #121212;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            margin-bottom: 24px;
+        }
+
+        .media-wrapper.widescreen {
+            aspect-ratio: 16/9;
+        }
+
+        .media-wrapper img, 
+        .media-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-block h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .story-block p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .spec-item .spec-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .spec-item .spec-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .story-block { padding: 24px; }
+            .project-hero { padding: 40px 16px 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">← Back to Studio</a>
+        <div class="studio-tag">Core Productions // Case Study</div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <h1>CHASSIS 01 // 911.1</h1>
+            <p>Cinematic Motion & Color Science Study</p>
+        </section>
+
+        <div class="story-container">
+            
+            <!-- Block 1: Main Motion Preview & Atmosphere -->
+            <div class="story-block">
+                <div class="media-wrapper widescreen">
+                    <video src="reel-911-1.mp4" poster="reel-911-1-thumb.jpg" preload="metadata" autoplay loop muted playsinline></video>
+                </div>
+                <h3>Atmospheric Grading & Sound Design</h3>
+                <p>Built to frame the timeless silhouette of the Porsche 991.1 generation. The creative direction relies heavily on deep obsidian shadow containment, controlled highlight roll-off, and tactile multi-layer sound production designed to maximize viewer retention.</p>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Platform Performance</span>
+                        <span class="spec-value" style="color: var(--accent-red);">630+ Organic Views</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Color Science</span>
+                        <span class="spec-value">DaVinci Resolve Log Pipeline</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 2: Technical & Execution Breakdown -->
+            <div class="story-block">
+                <h3>Aesthetic Execution & Pacing</h3>
+                <p>By blending Swiss-grid minimalism with high-velocity short-form cutting techniques, each frame is calibrated to hold viewer attention past the crucial 3-second hook threshold without relying on artificial visual clutter.</p>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Primary Tooling</span>
+                        <span class="spec-value">DaVinci Resolve, CapCut</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Audio Production</span>
+                        <span class="spec-value">Custom Multi-Layer FX</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Project Classification</span>
+                        <span class="spec-value">Personal Spec Project · 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CORE PRODUCTIONS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- Intersection Observer Scroll Fade Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.story-block').forEach(block => {
+                observer.observe(block);
+            });
+        });
+    </script>
+</body>
+</html>
