@@ -5,6 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Core Productions — The Apex Series</title>
     <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-obsidian);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            animation: pulseLogo 1s infinite alternate;
+        }
+
+        .loader-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-glass-glow);
+        }
+
+        .loader-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        @keyframes pulseLogo {
+            from { opacity: 0.6; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        body.loaded #preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
         :root {
             --bg-obsidian: #070707;
             --surface-glass: rgba(255, 255, 255, 0.03);
@@ -645,5 +692,19 @@
     </script>
 
     <script data-goatcounter="https://coreproductions.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 400); // Fades out smoothly after 0.4 seconds
+        });
+    </script>
 </body>
+    <!-- Cinematic Preloader Intro -->
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="core-productions-logo.png" alt="Core Productions" class="loader-logo">
+            <span class="loader-text">CORE PRODUCTIONS</span>
+        </div>
+    </div>
 </html>
