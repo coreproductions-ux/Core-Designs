@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz 300SL Roadster — Core Productions</title>
+    <style>
+        :root {
+            --bg-cream: #F5F2EB;
+            --surface-glass: rgba(36, 32, 28, 0.03);
+            --surface-glass-hover: rgba(36, 32, 28, 0.06);
+            --border-glass: rgba(36, 32, 28, 0.08);
+            --border-glass-glow: rgba(36, 32, 28, 0.2);
+            --text-primary: #24201C;
+            --text-secondary: #70675D;
+            --accent-bronze: #8C7355;
+            --grid-line: rgba(36, 32, 28, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Navigation Header */
+        header {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            background: rgba(245, 242, 235, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        .studio-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Section */
+        .project-hero {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 24px 40px 24px;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+        }
+
+        .project-hero p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Immersive Scrolling Content */
+        .story-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 120px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        /* Scroll Fade-Up Elements */
+        .story-block {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+        }
+
+        .story-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .media-wrapper {
+            width: 100%;
+            background: #EAE5DB;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(36, 32, 28, 0.04);
+            margin-bottom: 24px;
+        }
+
+        .media-wrapper.vertical {
+            aspect-ratio: 9/16;
+            max-width: 400px;
+            margin: 0 auto 24px auto;
+        }
+
+        .media-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-block h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .story-block p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .spec-item .spec-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .spec-item .spec-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .story-block { padding: 24px; }
+            .project-hero { padding: 40px 16px 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">← Back to Studio</a>
+        <div class="studio-tag">Core Productions // Legendary Series</div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <h1>Mercedes-Benz 300SL Roadster</h1>
+            <p>Bespoke Editorial & Timeless Heritage Study</p>
+        </section>
+
+        <div class="story-container">
+            
+            <!-- Block 1: Final Poster Showcase -->
+            <div class="story-block">
+                <div class="media-wrapper vertical">
+                    <img src="300SL Final.jpg" alt="Mercedes-Benz 300SL Roadster Final Poster">
+                </div>
+                <h3>The Apex Series // Ref. 03</h3>
+                <p>Designed as an exploration of high-key luxury minimalism. Shifting away from moody obsidian environments, this piece pairs rich espresso-metallic paintwork against warm architectural cream tones, minimalist typography, and delicate Swiss-grid framing.</p>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Design Framework</span>
+                        <span class="spec-value">Swiss-Grid & Serif Editorial</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Primary Tool</span>
+                        <span class="spec-value">Adobe Photoshop 2021</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 2: Technical & Aesthetic Breakdown -->
+            <div class="story-block">
+                <h3>Engineering Heritage & Tone</h3>
+                <p>Built around the iconic 1957 architecture of the direct-injected inline-6 platform. The typography balances classic European automotive serif italics with ultra-clean tracked metadata to achieve true hardcover lookbook presence.</p>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Visual Focus</span>
+                        <span class="spec-value">Coffee & Cream Luxury Palette</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Project Classification</span>
+                        <span class="spec-value">Legendary Edition · October 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CORE PRODUCTIONS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- Intersection Observer Scroll Fade Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.story-block').forEach(block => {
+                observer.observe(block);
+            });
+        });
+    </script>
+</body>
+</html>
